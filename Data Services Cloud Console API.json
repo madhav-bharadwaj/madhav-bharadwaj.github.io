@@ -1,0 +1,3853 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Data Services Cloud Console API",
+    "description": "Data Services Cloud Console API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://eu1.data.cloud.hpe.com"
+    },
+    {
+      "url": "https://us1.data.cloud.hpe.com"
+    },
+    {
+      "url": "https://jp1.data.cloud.hpe.com"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "oauth2Auth": {
+        "type": "http",
+        "scheme": "oauth2"
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2Auth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "GLBR > Protection Store Gateways"
+    },
+    {
+      "name": "GLBR > Protection Stores"
+    },
+    {
+      "name": "GLBR > Data Orchestrator"
+    },
+    {
+      "name": "GLBR > VM Backups"
+    },
+    {
+      "name": "GLBR > Backup Recovery Reports"
+    },
+    {
+      "name": "GLBR > Protection Policies"
+    },
+    {
+      "name": "GLBR > Protection Jobs Report"
+    },
+    {
+      "name": "GLBR > Protection Groups"
+    },
+    {
+      "name": "GLBR > vCenter Managers"
+    },
+    {
+      "name": "GLBR > VMware Objects Folder"
+    },
+    {
+      "name": "GLBR > VMware Clusters"
+    },
+    {
+      "name": "GLBR > Hosts"
+    },
+    {
+      "name": "GLBR > Snapshots"
+    },
+    {
+      "name": "GLBR > Datastore"
+    },
+    {
+      "name": "GLBR > Virtual Machine Protection Groups"
+    },
+    {
+      "name": "GLBR > Dashboard Items"
+    }
+  ],
+  "paths": {
+    "/api/v1/protection-store-gateways": {
+      "get": {
+        "tags": [
+          "GLBR > Protection Store Gateways"
+        ],
+        "summary": "Protection Store Gateways",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{DefaultOffset}}"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{DefaultLimit}}"
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "id,hostname,serialNumber,name,type"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/protection-store-gateways/{protectionStoreGatewayID}": {
+      "get": {
+        "tags": [
+          "GLBR > Protection Store Gateways"
+        ],
+        "summary": "Protection Store Gateways Detail",
+        "parameters": [
+          {
+            "name": "protectionStoreGatewayID",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "41f34390-90ba-47d1-be6b-386320ecd8bc"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/protection-store-gateways/{protectionStoreGatewayID}/consoleUser": {
+      "get": {
+        "tags": [
+          "GLBR > Protection Store Gateways"
+        ],
+        "summary": "Show credentials of a Protection Store Gateway console user",
+        "parameters": [
+          {
+            "name": "protectionStoreGatewayID",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "41f34390-90ba-47d1-be6b-386320ecd8bc"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/protection-store-gateway-sizer": {
+      "post": {
+        "tags": [
+          "GLBR > Protection Store Gateways"
+        ],
+        "summary": "Display resource requirements for Protection Storage Gateway",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "maxInCloudDailyProtectedDataTiB": 2,
+                  "maxInCloudRetentionDays": 2,
+                  "maxOnPremDailyProtectedDataTiB": 2,
+                  "maxOnPremRetentionDays": 2
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/protection-stores": {
+      "get": {
+        "tags": [
+          "GLBR > Protection Stores"
+        ],
+        "summary": "Display Protection Stores",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/protection-stores/{protectionStoreId}": {
+      "get": {
+        "tags": [
+          "GLBR > Protection Stores"
+        ],
+        "summary": "Display Protection Stores Detail Copy",
+        "parameters": [
+          {
+            "name": "protectionStoreId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "1d0875a9-10c9-4746-8f55-a585e2457962"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/protection-stores": {
+      "post": {
+        "tags": [
+          "GLBR > Protection Stores"
+        ],
+        "summary": "Create Protection Store",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "displayName": "Ron RD Test Create Protection Store",
+                  "protectionStoreType": "CLOUD",
+                  "region": "USA, North Virginia",
+                  "storageSystemId": "2dc06f5d-e175-4957-a460-b6cf909a6138"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/data-orchestrators": {
+      "get": {
+        "tags": [
+          "GLBR > Data Orchestrator"
+        ],
+        "summary": "Data Orchestrator",
+        "parameters": [
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/data-orchestrators/{dataOrchestratorId}": {
+      "get": {
+        "tags": [
+          "GLBR > Data Orchestrator"
+        ],
+        "summary": "Data Orchestrator Detail",
+        "parameters": [
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "id,name,customerId,connectionState,serialNumber,status,state,softwareVersion,upTimeInSeconds,dateTime"
+          },
+          {
+            "name": "dataOrchestratorId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "d36122b2-ab2d-4474-ba97-15d2521926f0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/data-orchestrators/{DoId}/set-remote-support": {
+      "post": {
+        "tags": [
+          "GLBR > Data Orchestrator"
+        ],
+        "summary": "Enable Remote Support for Data Orchestrator",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "remoteAccessEnabled": {
+                    "type": "boolean",
+                    "example": "true"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "DoId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/data-orchestrators/{DoId}/restart-guest-os": {
+      "post": {
+        "tags": [
+          "GLBR > Data Orchestrator"
+        ],
+        "summary": "Restart a Data Orchestrator",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "force": false
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "DoId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/data-orchestrators/{DoId}/generate-support-bundle": {
+      "post": {
+        "tags": [
+          "GLBR > Data Orchestrator"
+        ],
+        "summary": "Generate Support Bundles",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "description": "This is a support bundle generated through API for validation"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "DoId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/backup-recovery/v1beta1/indexed-files": {
+      "get": {
+        "tags": [
+          "GLBR > VM Backups"
+        ],
+        "summary": "Display Indexed Files from an asset",
+        "parameters": [
+          {
+            "name": "virtual-machine",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "44986dda-aeff-5b68-a6af-4d942616ec9d"
+          },
+          {
+            "name": "backup",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "7ab439fc-7f2e-4823-9c8d-0492f76349f2"
+          },
+          {
+            "name": "root-path",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "/Hard disk 1/volume 2/"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/virtual-machines": {
+      "get": {
+        "tags": [
+          "GLBR > VM Backups"
+        ],
+        "summary": "Display list of the virtual machines across registered HV managers",
+        "parameters": [
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "id,displayName"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "name eq 0-RRD-VVOL-VM-Test01"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/virtual-machines/{vmId}": {
+      "get": {
+        "tags": [
+          "GLBR > VM Backups"
+        ],
+        "summary": "Get Detail VM",
+        "parameters": [
+          {
+            "name": "vmId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "e5ffa3bf-9df4-55a7-a88e-efde8dfa69f3"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "content-type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Thu, 25 May 2023 04:04:39 GMT"
+                }
+              },
+              "x-envoy-upstream-service-time": {
+                "schema": {
+                  "type": "integer",
+                  "example": "100"
+                }
+              },
+              "server": {
+                "schema": {
+                  "type": "string",
+                  "example": "istio-envoy"
+                }
+              },
+              "transfer-encoding": {
+                "schema": {
+                  "type": "string",
+                  "example": "chunked"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "allowedOperations": [
+                    "VIRTUAL_MACHINE_BACKUP_CREATE",
+                    "VIRTUAL_MACHINE_BACKUP_UPDATE",
+                    "VIRTUAL_MACHINE_BACKUP_DELETE",
+                    "VIRTUAL_MACHINE_SNAPSHOT_CREATE",
+                    "VIRTUAL_MACHINE_SNAPSHOT_UPDATE",
+                    "VIRTUAL_MACHINE_SNAPSHOT_DELETE",
+                    "VIRTUAL_MACHINE_RESTORE",
+                    "VIRTUAL_MACHINE_DISKS_RESTORE"
+                  ],
+                  "appInfo": {
+                    "vmware": {
+                      "datacenterInfo": {
+                        "id": "c4054a24-6929-5540-92c1-b5cbef88df21",
+                        "moref": "datacenter-3",
+                        "name": "CDS-TME-DC"
+                      },
+                      "datastoresInfo": [
+                        {
+                          "displayName": "0-BRS-VMFS-Test4",
+                          "id": "5708f692-146c-5943-8722-a82288618d80",
+                          "name": "0-BRS-VMFS-Test4",
+                          "resourceUri": "/api/v1/datastores/5708f692-146c-5943-8722-a82288618d80",
+                          "type": "DATASTORE"
+                        }
+                      ],
+                      "moref": "vm-372675",
+                      "resourcePoolInfo": {
+                        "displayName": "Resources",
+                        "id": "31467e84-23e1-5132-8a39-f89ea4e1011c",
+                        "moref": "resgroup-9",
+                        "name": "Resources",
+                        "resourceUri": "/api/v1/hypervisor-managers/0c9acaa0-fe6e-4037-bc43-eaa239798f6d/resource-pools/31467e84-23e1-5132-8a39-f89ea4e1011c",
+                        "type": "HYPERVISOR_RESOURCE_POOL"
+                      },
+                      "toolsInfo": {
+                        "status": "OK",
+                        "type": "guestToolsTypeMSI",
+                        "version": "11334"
+                      },
+                      "type": "VMFS"
+                    }
+                  },
+                  "appType": "VMWARE",
+                  "capacityInBytes": 155692564480,
+                  "clusterInfo": {
+                    "displayName": "CDS-TME-Cluster",
+                    "id": "d6c952be-80f4-5c86-9a69-a23504dc3f6b",
+                    "name": "CDS-TME-Cluster",
+                    "resourceUri": "/api/v1/hypervisor-clusters/d6c952be-80f4-5c86-9a69-a23504dc3f6b",
+                    "type": "HYPERVISOR_CLUSTER"
+                  },
+                  "computeInfo": {
+                    "memorySizeInMib": "8192",
+                    "numCpuCores": 2,
+                    "numCpuThreads": 4
+                  },
+                  "createdAt": "2023-05-23T00:51:03.156Z",
+                  "customerId": "eb988b5e2dcb11ec840712b3b5263ef4",
+                  "displayName": "0-VM-RRD-VMFS-VM01-physical-RDM",
+                  "folderInfo": {
+                    "displayName": "",
+                    "id": "",
+                    "name": "",
+                    "resourceUri": "",
+                    "type": ""
+                  },
+                  "generation": 144,
+                  "guestInfo": {
+                    "buildVersion": "",
+                    "name": "Microsoft Windows Server 2016 or later (64-bit)",
+                    "releaseVersion": "",
+                    "type": "WINDOWS"
+                  },
+                  "hciClusterUuid": "",
+                  "hostInfo": {
+                    "displayName": "rtp-hpe-cds04.rtplab.nimblestorage.com",
+                    "id": "b75287f5-0fb6-5c9b-b671-7e9f2632e929",
+                    "name": "rtp-hpe-cds04.rtplab.nimblestorage.com",
+                    "resourceUri": "/api/v1/hypervisor-hosts/b75287f5-0fb6-5c9b-b671-7e9f2632e929",
+                    "type": "HYPERVISOR_HOST"
+                  },
+                  "hypervisorManagerInfo": {
+                    "displayName": "CDS-TPM-VCENTER",
+                    "id": "0c9acaa0-fe6e-4037-bc43-eaa239798f6d",
+                    "name": "cds-tme-vcenter.rtplab.nimblestorage.com",
+                    "resourceUri": "/api/v1/hypervisor-managers/0c9acaa0-fe6e-4037-bc43-eaa239798f6d",
+                    "type": "HYPERVISOR_MANAGER"
+                  },
+                  "id": "34738538-6f8a-5326-a102-676a20b91b5e",
+                  "name": "0-VM-RRD-VMFS-VM01-physical-RDM",
+                  "networkAdapters": [
+                    {
+                      "macAddress": "00:50:56:b7:29:2e",
+                      "macAddressType": "AUTOMATIC",
+                      "name": "Network adapter 2",
+                      "networkDetails": {
+                        "connectAtPowerOn": true,
+                        "displayName": "Mgmt-DPortGroup",
+                        "id": "dvportgroup-1003",
+                        "name": "Mgmt-DPortGroup",
+                        "resourceUri": "",
+                        "state": "",
+                        "type": "Vmxnet3"
+                      }
+                    }
+                  ],
+                  "networkAddress": "10.234.36.225",
+                  "powerState": "POWERED_ON",
+                  "protected": true,
+                  "protectionJobInfo": {
+                    "id": "97f41fc1-b308-40ed-9934-eff462c87310",
+                    "protectionPolicyInfo": {
+                      "id": "9a401e5e-09a7-4996-8008-f43a8ed1c116",
+                      "name": "Snapshot, Local, & Cloud Backup",
+                      "resourceUri": "/api/v1/protection-policies/9a401e5e-09a7-4996-8008-f43a8ed1c116",
+                      "type": "PROTECTION_POLICY"
+                    },
+                    "resourceUri": "/api/v1/protection-jobs/97f41fc1-b308-40ed-9934-eff462c87310",
+                    "type": "PROTECTION_JOB"
+                  },
+                  "protectionPolicyAppliedAtInfo": {
+                    "id": "",
+                    "name": "",
+                    "resourceUri": "",
+                    "type": ""
+                  },
+                  "protectionStatus": "PARTIAL",
+                  "recoveryPointsExist": true,
+                  "resourceUri": "/api/v1/virtual-machines/34738538-6f8a-5326-a102-676a20b91b5e",
+                  "services": [
+                    "backup-and-recovery"
+                  ],
+                  "state": "OK",
+                  "stateReason": "OK",
+                  "status": "OK",
+                  "type": "VIRTUAL_MACHINE",
+                  "uid": "4237ca59-abeb-481c-9c3e-17aa2a80617e",
+                  "updatedAt": "2023-05-25T04:01:15.696Z",
+                  "vclsVm": false,
+                  "virtualDisks": [
+                    {
+                      "appInfo": {
+                        "vmware": {
+                          "datastoreInfo": {
+                            "displayName": "0-BRS-VMFS-Test4",
+                            "id": "5708f692-146c-5943-8722-a82288618d80",
+                            "name": "0-BRS-VMFS-Test4",
+                            "resourceUri": "/api/v1/datastores/5708f692-146c-5943-8722-a82288618d80",
+                            "type": "DATASTORE"
+                          },
+                          "diskUuidEnabled": true,
+                          "type": "VMFS"
+                        }
+                      },
+                      "capacityInBytes": 42949672960,
+                      "filePath": "[0-BRS-VMFS-Test4] 0-VM-RRD-VMFS-VM01-physical-RDM/0-VM-RRD-VMFS-VM01-physical-RDM.vmdk",
+                      "id": "a6f8c930-eadc-5e0f-aef6-66bac0b3280a",
+                      "name": "Hard disk 1",
+                      "uid": "6000C298-8225-b663-46e4-67ef686f0d97"
+                    },
+                    {
+                      "appInfo": {
+                        "vmware": {
+                          "datastoreInfo": {
+                            "displayName": "0-BRS-VMFS-Test4",
+                            "id": "5708f692-146c-5943-8722-a82288618d80",
+                            "name": "0-BRS-VMFS-Test4",
+                            "resourceUri": "/api/v1/datastores/5708f692-146c-5943-8722-a82288618d80",
+                            "type": "DATASTORE"
+                          },
+                          "diskUuidEnabled": false,
+                          "type": "VMFS"
+                        }
+                      },
+                      "capacityInBytes": 5368709120,
+                      "filePath": "[0-BRS-VMFS-Test4] 0-VM-RRD-VMFS-VM01-physical-RDM/0-VM-RRD-VMFS-VM01-physical-RDM_1.vmdk",
+                      "id": "787d7a5d-a12f-593a-a741-66f931ab377f",
+                      "name": "Hard disk 2",
+                      "uid": "6000C294-9653-6aaf-18ac-d3919e9817b2"
+                    },
+                    {
+                      "appInfo": {
+                        "vmware": {
+                          "datastoreInfo": {
+                            "displayName": "0-BRS-VMFS-Test4",
+                            "id": "5708f692-146c-5943-8722-a82288618d80",
+                            "name": "0-BRS-VMFS-Test4",
+                            "resourceUri": "/api/v1/datastores/5708f692-146c-5943-8722-a82288618d80",
+                            "type": "DATASTORE"
+                          },
+                          "diskUuidEnabled": false,
+                          "type": "PRDM"
+                        }
+                      },
+                      "capacityInBytes": 107374182400,
+                      "filePath": "[0-BRS-VMFS-Test4] 0-VM-RRD-VMFS-VM01-physical-RDM/0-VM-RRD-VMFS-VM01-physical-RDM_2.vmdk",
+                      "id": "b416ad29-9212-5a0e-8998-990d21974637",
+                      "name": "Hard disk 3",
+                      "uid": "01001e00003838363630316330383961373762303536633963653930303430396362326336536572766572"
+                    }
+                  ],
+                  "vmClassification": "",
+                  "vmConfigPath": "[0-BRS-VMFS-Test4] 0-VM-RRD-VMFS-VM01-physical-RDM/0-VM-RRD-VMFS-VM01-physical-RDM.vmx",
+                  "vmPerfMetricInfo": {
+                    "averageReadLatency": 0,
+                    "averageWriteLatency": 0,
+                    "cpuAllocatedInMhz": 0,
+                    "cpuUsedInMhz": 0,
+                    "memoryAllocatedInMb": 0,
+                    "memoryUsedInMb": 0,
+                    "storageAllocatedInKb": 0,
+                    "storageUsedInBytes": 0,
+                    "totalReadIops": 0,
+                    "totalWriteIops": 0
+                  },
+                  "vmProtectionGroupsInfo": null,
+                  "volumesInfo": [
+                    {
+                      "displayName": "",
+                      "id": "",
+                      "name": "",
+                      "resourceUri": "",
+                      "scsiIdentifier": "",
+                      "sizeInBytes": 0,
+                      "storageFolderInfo": {
+                        "displayName": "",
+                        "id": "",
+                        "name": "",
+                        "resourceUri": "",
+                        "type": ""
+                      },
+                      "storagePoolInfo": {
+                        "displayName": "",
+                        "id": "",
+                        "name": "",
+                        "resourceUri": "",
+                        "type": ""
+                      },
+                      "storageSystemInfo": {
+                        "displayName": "group-rtp-array369",
+                        "id": "409cb2c6",
+                        "managed": true,
+                        "name": "group-rtp-array369",
+                        "resourceUri": "",
+                        "serialNumber": "",
+                        "type": "NIMBLE",
+                        "vendorName": ""
+                      },
+                      "type": "",
+                      "volumeSetInfo": {
+                        "displayName": "",
+                        "id": "",
+                        "name": "",
+                        "resourceUri": "",
+                        "type": ""
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/virtual-machines/{vmId}/backups": {
+      "post": {
+        "tags": [
+          "GLBR > VM Backups"
+        ],
+        "summary": "Create a backup of a VM (not implemented yet)",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "backupGranularity": "VMWARE_CBT",
+                  "backupMode": "FULL",
+                  "backupType": "BACKUP",
+                  "description": "Test API for cloud backup",
+                  "expireAfter": {
+                    "unit": "DAYS",
+                    "value": 2
+                  },
+                  "lockFor": {
+                    "unit": "HOURS",
+                    "value": 1
+                  },
+                  "name": "Test-API-Cloud",
+                  "protectionStoreId": "501a99e7-fb79-4fd7-89d5-a5dfb3441859",
+                  "sourceCopyInfo": {
+                    "id": "90ad82bd-fa67-5bc0-9e37-728c19d08fd9",
+                    "resourceUri": "/api/v1/virtual-machines/90ad82bd-fa67-5bc0-9e37-728c19d08fd9",
+                    "type": "SNAPSHOT"
+                  },
+                  "verify": false
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "vmId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "e5ffa3bf-9df4-55a7-a88e-efde8dfa69f3"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "GLBR > VM Backups"
+        ],
+        "summary": "Display Backups of a VM",
+        "parameters": [
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "id,backupType,consistency,expiresAt,name,pointInTime"
+          },
+          {
+            "name": "vmId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "34738538-6f8a-5326-a102-676a20b91b5e"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "content-type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Thu, 25 May 2023 04:09:26 GMT"
+                }
+              },
+              "content-length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "1977"
+                }
+              },
+              "x-envoy-upstream-service-time": {
+                "schema": {
+                  "type": "integer",
+                  "example": "527"
+                }
+              },
+              "server": {
+                "schema": {
+                  "type": "string",
+                  "example": "istio-envoy"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "items": [
+                    {
+                      "backupType": "BACKUP",
+                      "consistency": "CRASH",
+                      "expiresAt": "2023-05-25T16:57:56.251Z",
+                      "id": "49f10d8d-2cbe-45af-9d09-ab2e0f17ead1",
+                      "indexed": "NOT_INDEXED",
+                      "name": "0-VM-RRD-VMFS-VM01-physical-RDM-2023-05-23-12:42:07",
+                      "partialBackup": false,
+                      "pointInTime": "2023-05-23T16:18:05.000Z"
+                    },
+                    {
+                      "backupType": "CLOUD_BACKUP",
+                      "consistency": "CRASH",
+                      "expiresAt": "2023-06-06T16:36:55.108Z",
+                      "id": "c1b59d18-b245-4c92-8cc4-9888f43597fa",
+                      "indexed": "NOT_INDEXED",
+                      "name": "HPE_Cloud_Protection_Store_2023-05-23-12:26:33",
+                      "partialBackup": false,
+                      "pointInTime": "2023-05-23T16:18:05.000Z"
+                    },
+                    {
+                      "backupType": "BACKUP",
+                      "consistency": "CRASH",
+                      "expiresAt": "2023-05-28T16:24:56.608Z",
+                      "id": "0fb97fe4-43ab-4b6c-b148-ea9029d151f2",
+                      "indexed": "NOT_INDEXED",
+                      "name": "On-Premises_Protection_Store_2023-05-23-12:18:11",
+                      "partialBackup": false,
+                      "pointInTime": "2023-05-23T16:18:05.000Z"
+                    },
+                    {
+                      "backupType": "BACKUP",
+                      "consistency": "CRASH",
+                      "expiresAt": "2023-05-28T16:36:58.359Z",
+                      "id": "2e43ac81-355a-4776-bce9-01205b2c0ffa",
+                      "indexed": "NOT_INDEXED",
+                      "name": "On-Premises_Protection_Store_2023-05-23-12:30:14",
+                      "partialBackup": false,
+                      "pointInTime": "2023-05-23T16:30:08.000Z"
+                    },
+                    {
+                      "backupType": "BACKUP",
+                      "consistency": "CRASH",
+                      "expiresAt": "2023-05-29T03:05:50.062Z",
+                      "id": "92ce90b4-b19f-4796-938f-34e896094f5b",
+                      "indexed": "NOT_INDEXED",
+                      "name": "On-Premises_Protection_Store_2023-05-23-23:00:00",
+                      "partialBackup": false,
+                      "pointInTime": "2023-05-24T02:17:36.000Z"
+                    },
+                    {
+                      "backupType": "BACKUP",
+                      "consistency": "CRASH",
+                      "expiresAt": "2023-05-29T22:17:37.694Z",
+                      "id": "960c43ab-d946-4bdf-8127-0148b22506d2",
+                      "indexed": "NOT_INDEXED",
+                      "name": "On-Premises_Protection_Store_2023-05-24-18:11:33",
+                      "partialBackup": false,
+                      "pointInTime": "2023-05-24T22:11:27.000Z"
+                    },
+                    {
+                      "backupType": "BACKUP",
+                      "consistency": "CRASH",
+                      "expiresAt": "2023-05-30T03:02:33.853Z",
+                      "id": "7f31ed11-20f1-4905-941d-11ee98b3ba55",
+                      "indexed": "NOT_INDEXED",
+                      "name": "On-Premises_Protection_Store_2023-05-24-23:00:00",
+                      "partialBackup": false,
+                      "pointInTime": "2023-05-25T02:17:35.000Z"
+                    }
+                  ],
+                  "pageLimit": 100,
+                  "pageOffset": 0,
+                  "total": 7
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/virtual-machines/{vmId}/backups/{backupId}/index-files": {
+      "post": {
+        "tags": [
+          "GLBR > VM Backups"
+        ],
+        "summary": "Create Index of VM Files",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": ""
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "vmId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "8502b867-dfb1-5aa5-9b78-27f5826238e2"
+          },
+          {
+            "name": "backupId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "acb9969f-6373-4a55-945f-99145113ee52"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/virtual-machines/{vmId}/backups/{backupId}/indexed-files": {
+      "get": {
+        "tags": [
+          "GLBR > VM Backups"
+        ],
+        "summary": "Display files & folders from a backup of a VM",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "0"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "100"
+          },
+          {
+            "name": "rootPath",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "/"
+          },
+          {
+            "name": "vmId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "8502b867-dfb1-5aa5-9b78-27f5826238e2"
+          },
+          {
+            "name": "backupId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "acb9969f-6373-4a55-945f-99145113ee52"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/virtual-machines/{vmId}/backups/{backupId}": {
+      "delete": {
+        "tags": [
+          "GLBR > VM Backups"
+        ],
+        "summary": "Delete a backup of a VM",
+        "parameters": [
+          {
+            "name": "vmId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "90ad82bd-fa67-5bc0-9e37-728c19d08fd9"
+          },
+          {
+            "name": "backupId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "ca259665-2ca1-449a-994c-60a586d064e9"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/backup-recovery-reports/protection-jobs": {
+      "get": {
+        "tags": [
+          "GLBR > Protection Jobs Report"
+        ],
+        "summary": "Report all protection jobs",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/protection-policies": {
+      "get": {
+        "tags": [
+          "GLBR > Protection Policies"
+        ],
+        "summary": "Get All Protection Policies",
+        "parameters": [
+          {
+            "name": "filter ",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "protectionJobsInfo.assetInfo,displayName eq \"0-VM-RRD-VMFS-VM01-physical-RDM\""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "GLBR > Protection Policies"
+        ],
+        "summary": "Create a new protection policy",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "description": "Protection Policy protecting Finance department's Virtual Machines or datastores.",
+                  "name": "Gold-Protection-Policy",
+                  "protections": [
+                    {
+                      "applicationType": "VMWARE",
+                      "protectionStoreId": "2a1172be-4281-44f9-848b-9c3f86378b13",
+                      "schedules": [
+                        {
+                          "expireAfter": {
+                            "unit": "HOURS",
+                            "value": 0
+                          },
+                          "id": 0,
+                          "lockFor": {
+                            "unit": "HOURS",
+                            "value": 0
+                          },
+                          "name": "Hourly snapshot schedule",
+                          "namePattern": {
+                            "format": "Test_{SourceAssetName}_Copy_{DateFormat}"
+                          },
+                          "schedule": {
+                            "activeTime": {
+                              "activeFromTime": "16:15",
+                              "activeUntilTime": "20:15"
+                            },
+                            "recurrence": "BY_MINUTES",
+                            "repeatInterval": {
+                              "every": 0,
+                              "on": [
+                                0
+                              ]
+                            },
+                            "startTime": "16:35"
+                          },
+                          "sourceProtectionScheduleId": 0,
+                          "verify": false
+                        }
+                      ],
+                      "type": "SNAPSHOT"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/protection-policies/{policyId}": {
+      "get": {
+        "tags": [
+          "GLBR > Protection Policies"
+        ],
+        "summary": "Get detailed info from a protection policy",
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/protection-jobs/{protectionJobsId}/run": {
+      "post": {
+        "tags": [
+          "GLBR > Protection Policies"
+        ],
+        "summary": "Run a protection job immediately",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "scheduleIds": [
+                    3
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "protectionJobsId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "97f41fc1-b308-40ed-9934-eff462c87310"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/protection-jobs/{protectionJobId}": {
+      "get": {
+        "tags": [
+          "GLBR > Protection Policies"
+        ],
+        "summary": "Show detailed existing protection Job",
+        "parameters": [
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "id"
+          },
+          {
+            "name": "protectionJobId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "97f41fc1-b308-40ed-9934-eff462c87310"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Wed, 24 May 2023 22:10:11 GMT"
+                }
+              },
+              "server": {
+                "schema": {
+                  "type": "string",
+                  "example": "istio-envoy"
+                }
+              },
+              "content-length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "2519"
+                }
+              },
+              "content-type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "x-envoy-upstream-service-time": {
+                "schema": {
+                  "type": "integer",
+                  "example": "33"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "assetInfo": {
+                    "id": "34738538-6f8a-5326-a102-676a20b91b5e",
+                    "displayName": "0-VM-RRD-VMFS-VM01-physical-RDM",
+                    "type": "VIRTUAL_MACHINE",
+                    "resourceUri": "/api/v1/virtual-machines/34738538-6f8a-5326-a102-676a20b91b5e"
+                  },
+                  "protectionPolicyInfo": {
+                    "id": "9a401e5e-09a7-4996-8008-f43a8ed1c116",
+                    "name": "Snapshot, Local, & Cloud Backup",
+                    "resourceUri": "/api/v1/protection-policies/9a401e5e-09a7-4996-8008-f43a8ed1c116",
+                    "type": "PROTECTION_POLICY"
+                  },
+                  "id": "97f41fc1-b308-40ed-9934-eff462c87310",
+                  "operational": "ACTIVE",
+                  "generation": 33,
+                  "protections": [
+                    {
+                      "id": "f47854b5-6f0d-4794-86c8-763017f0b3d7",
+                      "schedules": [
+                        {
+                          "executionStatuses": [
+                            {
+                              "status": "OK",
+                              "timestamp": "2023-05-24T03:07:25.454Z"
+                            }
+                          ],
+                          "id": 2,
+                          "sourceProtectionScheduleId": 1,
+                          "nextRunTime": "2023-05-25T03:00:00.000Z",
+                          "operational": "ACTIVE",
+                          "schedule": {
+                            "recurrence": "DAILY",
+                            "repeatInterval": {
+                              "every": 1
+                            },
+                            "startTime": "23:00"
+                          },
+                          "overrides": {
+                            "schedule": {
+                              "recurrence": "DAILY",
+                              "repeatInterval": {
+                                "every": 1
+                              },
+                              "startTime": "23:00"
+                            },
+                            "backupGranularity": "VOLUME",
+                            "consistency": "CRASH"
+                          },
+                          "prevRunTime": "2023-05-24T03:00:00.000Z",
+                          "prevSuccessfulRunTime": "2023-05-24T03:07:25.454Z"
+                        }
+                      ],
+                      "type": "BACKUP",
+                      "applicationType": "VMWARE"
+                    },
+                    {
+                      "id": "88730122-1c26-4dd0-bce7-e575c34b5065",
+                      "schedules": [
+                        {
+                          "executionStatuses": [
+                            {
+                              "status": "OK",
+                              "timestamp": "2023-05-24T12:17:41.075Z"
+                            },
+                            {
+                              "status": "OK",
+                              "timestamp": "2023-05-24T14:17:40.768Z"
+                            },
+                            {
+                              "status": "OK",
+                              "timestamp": "2023-05-24T16:17:41.032Z"
+                            },
+                            {
+                              "status": "OK",
+                              "timestamp": "2023-05-24T18:17:41.135Z"
+                            },
+                            {
+                              "status": "OK",
+                              "timestamp": "2023-05-24T20:17:40.988Z"
+                            }
+                          ],
+                          "id": 1,
+                          "nextRunTime": "2023-05-24T22:17:23.000Z",
+                          "operational": "ACTIVE",
+                          "schedule": {
+                            "recurrence": "HOURLY",
+                            "repeatInterval": {
+                              "every": 2
+                            }
+                          },
+                          "overrides": {
+                            "schedule": {
+                              "recurrence": "HOURLY",
+                              "repeatInterval": {
+                                "every": 2
+                              }
+                            },
+                            "backupGranularity": "VOLUME",
+                            "consistency": "CRASH"
+                          },
+                          "prevRunTime": "2023-05-24T20:17:23.000Z",
+                          "prevSuccessfulRunTime": "2023-05-24T20:17:40.988Z"
+                        }
+                      ],
+                      "type": "SNAPSHOT",
+                      "applicationType": "VMWARE"
+                    },
+                    {
+                      "id": "996f95a8-976b-43f4-bf34-3a30d84e5dca",
+                      "schedules": [
+                        {
+                          "id": 3,
+                          "sourceProtectionScheduleId": 2,
+                          "nextRunTime": "2023-05-28T06:00:00.000Z",
+                          "operational": "ACTIVE",
+                          "schedule": {
+                            "recurrence": "WEEKLY",
+                            "repeatInterval": {
+                              "on": [
+                                6
+                              ],
+                              "every": 1
+                            },
+                            "startTime": "02:00"
+                          },
+                          "overrides": {
+                            "schedule": {
+                              "recurrence": "WEEKLY",
+                              "repeatInterval": {
+                                "on": [
+                                  6
+                                ],
+                                "every": 1
+                              },
+                              "startTime": "02:00"
+                            },
+                            "backupGranularity": "VOLUME",
+                            "consistency": "CRASH"
+                          }
+                        }
+                      ],
+                      "type": "CLOUD_BACKUP",
+                      "applicationType": "VMWARE"
+                    }
+                  ],
+                  "resourceUri": "/api/v1/protection-jobs/97f41fc1-b308-40ed-9934-eff462c87310",
+                  "dataOrchestratorId": "d36122b2-ab2d-4474-ba97-15d2521926f0",
+                  "type": "PROTECTION_JOB"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/protection-jobs": {
+      "get": {
+        "tags": [
+          "GLBR > Protection Policies"
+        ],
+        "summary": "Show all existing protection jobs",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "assetInfo.id eq 34738538-6f8a-5326-a102-676a20b91b5e"
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Thu, 25 May 2023 08:14:40 GMT"
+                }
+              },
+              "server": {
+                "schema": {
+                  "type": "string",
+                  "example": "istio-envoy"
+                }
+              },
+              "content-length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "24332"
+                }
+              },
+              "content-type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "x-envoy-upstream-service-time": {
+                "schema": {
+                  "type": "integer",
+                  "example": "147"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "items": [
+                    {
+                      "assetInfo": {
+                        "id": "5f47a26a-8f94-5f2f-8ab0-e5e9edbbdff0",
+                        "displayName": "0-SVT-DEMO-VM03",
+                        "type": "VIRTUAL_MACHINE",
+                        "resourceUri": "/api/v1/virtual-machines/5f47a26a-8f94-5f2f-8ab0-e5e9edbbdff0"
+                      },
+                      "protectionPolicyInfo": {
+                        "id": "45582918-aa2f-4d72-9f55-8d6a13f07729",
+                        "name": "VVOL protection 3 tier",
+                        "resourceUri": "/api/v1/protection-policies/45582918-aa2f-4d72-9f55-8d6a13f07729",
+                        "type": "PROTECTION_POLICY"
+                      },
+                      "id": "50c15fc7-00d5-4c17-8291-d4ac8c94d8e0",
+                      "operational": "ACTIVE",
+                      "generation": 182,
+                      "protections": [
+                        {
+                          "id": "4160af63-1131-48ef-8b50-a25fc366ad9f",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T15:03:02.388Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T19:03:02.101Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T23:03:03.632Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T03:03:03.236Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T07:03:01.727Z"
+                                }
+                              ],
+                              "id": 1,
+                              "nextRunTime": "2023-05-25T11:00:57.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "HOURLY",
+                                "repeatInterval": {
+                                  "every": 4
+                                }
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "HOURLY",
+                                  "repeatInterval": {
+                                    "every": 4
+                                  }
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH_CONSISTENT_ON_FAILURE"
+                              },
+                              "prevRunTime": "2023-05-25T07:00:57.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T07:03:01.727Z"
+                            }
+                          ],
+                          "type": "SNAPSHOT",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "36aa62c4-ddf7-4599-b40f-c40762626491",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-19T04:48:10.145Z"
+                                }
+                              ],
+                              "id": 3,
+                              "sourceProtectionScheduleId": 2,
+                              "nextRunTime": "2023-05-26T04:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "WEEKLY",
+                                "repeatInterval": {
+                                  "on": [
+                                    4
+                                  ],
+                                  "every": 1
+                                },
+                                "startTime": "00:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "WEEKLY",
+                                  "repeatInterval": {
+                                    "on": [
+                                      4
+                                    ],
+                                    "every": 1
+                                  },
+                                  "startTime": "00:00"
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH_CONSISTENT_ON_FAILURE"
+                              },
+                              "prevRunTime": "2023-05-19T04:00:00.000Z",
+                              "prevSuccessfulRunTime": "2023-05-19T04:48:10.145Z"
+                            }
+                          ],
+                          "type": "CLOUD_BACKUP",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "39406920-e4f6-4a7a-aad0-3dcc3b970407",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-21T04:20:11.291Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-22T04:17:53.630Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-23T04:16:50.702Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T04:14:44.222Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T04:15:01.651Z"
+                                }
+                              ],
+                              "id": 2,
+                              "sourceProtectionScheduleId": 1,
+                              "nextRunTime": "2023-05-26T04:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "DAILY",
+                                "repeatInterval": {
+                                  "every": 1
+                                },
+                                "startTime": "00:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "DAILY",
+                                  "repeatInterval": {
+                                    "every": 1
+                                  },
+                                  "startTime": "00:00"
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH_CONSISTENT_ON_FAILURE"
+                              },
+                              "prevRunTime": "2023-05-25T04:00:00.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T04:15:01.651Z"
+                            }
+                          ],
+                          "type": "BACKUP",
+                          "applicationType": "VMWARE"
+                        }
+                      ],
+                      "resourceUri": "/api/v1/protection-jobs/50c15fc7-00d5-4c17-8291-d4ac8c94d8e0",
+                      "dataOrchestratorId": "d36122b2-ab2d-4474-ba97-15d2521926f0",
+                      "type": "PROTECTION_JOB"
+                    },
+                    {
+                      "assetInfo": {
+                        "id": "8502b867-dfb1-5aa5-9b78-27f5826238e2",
+                        "displayName": "0-SVT-VVOL-Demo-VM07",
+                        "type": "VIRTUAL_MACHINE",
+                        "resourceUri": "/api/v1/virtual-machines/8502b867-dfb1-5aa5-9b78-27f5826238e2"
+                      },
+                      "protectionPolicyInfo": {
+                        "id": "45582918-aa2f-4d72-9f55-8d6a13f07729",
+                        "name": "VVOL protection 3 tier",
+                        "resourceUri": "/api/v1/protection-policies/45582918-aa2f-4d72-9f55-8d6a13f07729",
+                        "type": "PROTECTION_POLICY"
+                      },
+                      "id": "b0469053-4432-46e6-9f71-82ce40f57714",
+                      "operational": "ACTIVE",
+                      "generation": 178,
+                      "protections": [
+                        {
+                          "id": "39406920-e4f6-4a7a-aad0-3dcc3b970407",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-21T04:05:23.030Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-22T04:05:11.279Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-23T04:04:57.305Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T04:04:59.454Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T04:05:00.743Z"
+                                }
+                              ],
+                              "id": 2,
+                              "sourceProtectionScheduleId": 1,
+                              "nextRunTime": "2023-05-26T04:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "DAILY",
+                                "repeatInterval": {
+                                  "every": 1
+                                },
+                                "startTime": "00:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "DAILY",
+                                  "repeatInterval": {
+                                    "every": 1
+                                  },
+                                  "startTime": "00:00"
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-25T04:00:00.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T04:05:00.743Z"
+                            }
+                          ],
+                          "type": "BACKUP",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "36aa62c4-ddf7-4599-b40f-c40762626491",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-19T04:08:53.003Z"
+                                }
+                              ],
+                              "id": 3,
+                              "sourceProtectionScheduleId": 2,
+                              "nextRunTime": "2023-05-26T04:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "WEEKLY",
+                                "repeatInterval": {
+                                  "on": [
+                                    4
+                                  ],
+                                  "every": 1
+                                },
+                                "startTime": "00:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "WEEKLY",
+                                  "repeatInterval": {
+                                    "on": [
+                                      4
+                                    ],
+                                    "every": 1
+                                  },
+                                  "startTime": "00:00"
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-19T04:00:00.000Z",
+                              "prevSuccessfulRunTime": "2023-05-19T04:08:53.003Z"
+                            }
+                          ],
+                          "type": "CLOUD_BACKUP",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "4160af63-1131-48ef-8b50-a25fc366ad9f",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T13:51:22.457Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T17:51:21.600Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T21:51:21.428Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T01:51:21.686Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T05:51:21.321Z"
+                                }
+                              ],
+                              "id": 1,
+                              "nextRunTime": "2023-05-25T09:50:59.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "HOURLY",
+                                "repeatInterval": {
+                                  "every": 4
+                                }
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "HOURLY",
+                                  "repeatInterval": {
+                                    "every": 4
+                                  }
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-25T05:50:59.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T05:51:21.321Z"
+                            }
+                          ],
+                          "type": "SNAPSHOT",
+                          "applicationType": "VMWARE"
+                        }
+                      ],
+                      "resourceUri": "/api/v1/protection-jobs/b0469053-4432-46e6-9f71-82ce40f57714",
+                      "dataOrchestratorId": "d36122b2-ab2d-4474-ba97-15d2521926f0",
+                      "type": "PROTECTION_JOB"
+                    },
+                    {
+                      "assetInfo": {
+                        "id": "f6aee6a8-7300-56d1-8313-4bc6efda3b4f",
+                        "displayName": "0-Linux0Demo-VM03",
+                        "type": "VIRTUAL_MACHINE",
+                        "resourceUri": "/api/v1/virtual-machines/f6aee6a8-7300-56d1-8313-4bc6efda3b4f"
+                      },
+                      "protectionPolicyInfo": {
+                        "id": "1727fe8e-336d-4850-9fe1-6ca4975f3771",
+                        "name": "STOREONCE",
+                        "resourceUri": "/api/v1/protection-policies/1727fe8e-336d-4850-9fe1-6ca4975f3771",
+                        "type": "PROTECTION_POLICY"
+                      },
+                      "id": "4ecea7cf-96a4-4a90-9c84-99d5083c9d30",
+                      "operational": "ACTIVE",
+                      "generation": 849,
+                      "protections": [
+                        {
+                          "id": "ba99d097-0a04-4a05-adb6-3288a884cf35",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "IN_PROGRESS"
+                                },
+                                {
+                                  "status": "IN_PROGRESS"
+                                },
+                                {
+                                  "status": "IN_PROGRESS"
+                                },
+                                {
+                                  "status": "IN_PROGRESS"
+                                },
+                                {
+                                  "status": "IN_PROGRESS"
+                                }
+                              ],
+                              "id": 3,
+                              "sourceProtectionScheduleId": 2,
+                              "nextRunTime": "2023-05-26T04:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "DAILY",
+                                "repeatInterval": {
+                                  "every": 1
+                                },
+                                "startTime": "00:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "DAILY",
+                                  "repeatInterval": {
+                                    "every": 1
+                                  },
+                                  "startTime": "00:00"
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-25T04:00:00.000Z"
+                            }
+                          ],
+                          "type": "CLOUD_BACKUP",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "87aaa7bd-3603-4fed-88a0-eb34723b585c",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T06:03:03.543Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T06:33:03.521Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T07:02:59.418Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T07:33:03.395Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T08:03:04.109Z"
+                                }
+                              ],
+                              "id": 1,
+                              "nextRunTime": "2023-05-25T08:32:47.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "BY_MINUTES",
+                                "repeatInterval": {
+                                  "every": 30
+                                }
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "BY_MINUTES",
+                                  "repeatInterval": {
+                                    "every": 30
+                                  }
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-25T08:02:47.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T08:03:04.109Z"
+                            }
+                          ],
+                          "type": "SNAPSHOT",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "d4e11165-96d4-49a9-8796-34104f368843",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "IN_PROGRESS"
+                                },
+                                {
+                                  "status": "IN_PROGRESS"
+                                },
+                                {
+                                  "status": "IN_PROGRESS"
+                                },
+                                {
+                                  "status": "IN_PROGRESS"
+                                },
+                                {
+                                  "status": "IN_PROGRESS"
+                                }
+                              ],
+                              "id": 2,
+                              "sourceProtectionScheduleId": 1,
+                              "nextRunTime": "2023-05-26T04:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "DAILY",
+                                "repeatInterval": {
+                                  "every": 1
+                                },
+                                "startTime": "00:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "DAILY",
+                                  "repeatInterval": {
+                                    "every": 1
+                                  },
+                                  "startTime": "00:00"
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-25T04:00:00.000Z"
+                            }
+                          ],
+                          "type": "BACKUP",
+                          "applicationType": "VMWARE"
+                        }
+                      ],
+                      "resourceUri": "/api/v1/protection-jobs/4ecea7cf-96a4-4a90-9c84-99d5083c9d30",
+                      "dataOrchestratorId": "d36122b2-ab2d-4474-ba97-15d2521926f0",
+                      "type": "PROTECTION_JOB"
+                    },
+                    {
+                      "assetInfo": {
+                        "id": "e5ffa3bf-9df4-55a7-a88e-efde8dfa69f3",
+                        "displayName": "0-RRD-VVOL-VM-Test01",
+                        "type": "VIRTUAL_MACHINE",
+                        "resourceUri": "/api/v1/virtual-machines/e5ffa3bf-9df4-55a7-a88e-efde8dfa69f3"
+                      },
+                      "protectionPolicyInfo": {
+                        "id": "45582918-aa2f-4d72-9f55-8d6a13f07729",
+                        "name": "VVOL protection 3 tier",
+                        "resourceUri": "/api/v1/protection-policies/45582918-aa2f-4d72-9f55-8d6a13f07729",
+                        "type": "PROTECTION_POLICY"
+                      },
+                      "id": "d47cd749-59c8-4c70-bbb4-46ea10428505",
+                      "operational": "ACTIVE",
+                      "generation": 182,
+                      "protections": [
+                        {
+                          "id": "36aa62c4-ddf7-4599-b40f-c40762626491",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-19T04:02:27.726Z"
+                                }
+                              ],
+                              "id": 3,
+                              "sourceProtectionScheduleId": 2,
+                              "nextRunTime": "2023-05-26T04:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "WEEKLY",
+                                "repeatInterval": {
+                                  "on": [
+                                    4
+                                  ],
+                                  "every": 1
+                                },
+                                "startTime": "00:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "WEEKLY",
+                                  "repeatInterval": {
+                                    "on": [
+                                      4
+                                    ],
+                                    "every": 1
+                                  },
+                                  "startTime": "00:00"
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-19T04:00:00.000Z",
+                              "prevSuccessfulRunTime": "2023-05-19T04:02:27.726Z"
+                            }
+                          ],
+                          "type": "CLOUD_BACKUP",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "39406920-e4f6-4a7a-aad0-3dcc3b970407",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-21T04:01:10.624Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-22T04:06:19.880Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-23T04:01:09.758Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T04:01:09.186Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T04:01:42.930Z"
+                                }
+                              ],
+                              "id": 2,
+                              "sourceProtectionScheduleId": 1,
+                              "nextRunTime": "2023-05-26T04:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "DAILY",
+                                "repeatInterval": {
+                                  "every": 1
+                                },
+                                "startTime": "00:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "DAILY",
+                                  "repeatInterval": {
+                                    "every": 1
+                                  },
+                                  "startTime": "00:00"
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-25T04:00:00.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T04:01:42.930Z"
+                            }
+                          ],
+                          "type": "BACKUP",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "4160af63-1131-48ef-8b50-a25fc366ad9f",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T15:46:58.216Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T19:46:58.540Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T23:46:58.522Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T03:46:58.319Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T07:46:58.255Z"
+                                }
+                              ],
+                              "id": 1,
+                              "nextRunTime": "2023-05-25T11:46:39.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "HOURLY",
+                                "repeatInterval": {
+                                  "every": 4
+                                }
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "HOURLY",
+                                  "repeatInterval": {
+                                    "every": 4
+                                  }
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-25T07:46:39.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T07:46:58.255Z"
+                            }
+                          ],
+                          "type": "SNAPSHOT",
+                          "applicationType": "VMWARE"
+                        }
+                      ],
+                      "resourceUri": "/api/v1/protection-jobs/d47cd749-59c8-4c70-bbb4-46ea10428505",
+                      "dataOrchestratorId": "d36122b2-ab2d-4474-ba97-15d2521926f0",
+                      "type": "PROTECTION_JOB"
+                    },
+                    {
+                      "assetInfo": {
+                        "id": "44986dda-aeff-5b68-a6af-4d942616ec9d",
+                        "displayName": "0-Linux-Demo-VM02",
+                        "type": "VIRTUAL_MACHINE",
+                        "resourceUri": "/api/v1/virtual-machines/44986dda-aeff-5b68-a6af-4d942616ec9d"
+                      },
+                      "protectionPolicyInfo": {
+                        "id": "136d43de-d95c-4bf0-842d-cd342c309c29",
+                        "name": "VVOL Snapshots",
+                        "resourceUri": "/api/v1/protection-policies/136d43de-d95c-4bf0-842d-cd342c309c29",
+                        "type": "PROTECTION_POLICY"
+                      },
+                      "id": "70453295-762b-440c-bc45-7661bb10df64",
+                      "operational": "ACTIVE",
+                      "generation": 154,
+                      "protections": [
+                        {
+                          "id": "41f342d1-6e46-4168-9dad-fff95353995f",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T14:46:36.554Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T18:46:36.267Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T22:46:36.522Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T02:46:36.606Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T06:46:35.427Z"
+                                }
+                              ],
+                              "id": 1,
+                              "nextRunTime": "2023-05-25T10:46:07.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "HOURLY",
+                                "repeatInterval": {
+                                  "every": 4
+                                }
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "HOURLY",
+                                  "repeatInterval": {
+                                    "every": 4
+                                  }
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH_CONSISTENT_ON_FAILURE"
+                              },
+                              "prevRunTime": "2023-05-25T06:46:07.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T06:46:35.427Z"
+                            }
+                          ],
+                          "type": "SNAPSHOT",
+                          "applicationType": "VMWARE"
+                        }
+                      ],
+                      "resourceUri": "/api/v1/protection-jobs/70453295-762b-440c-bc45-7661bb10df64",
+                      "dataOrchestratorId": "d36122b2-ab2d-4474-ba97-15d2521926f0",
+                      "type": "PROTECTION_JOB"
+                    },
+                    {
+                      "assetInfo": {
+                        "id": "56a795dd-ee49-5b62-aa82-6e1442821d7d",
+                        "displayName": "0-SVT-Demo-VM02",
+                        "type": "VIRTUAL_MACHINE",
+                        "resourceUri": "/api/v1/virtual-machines/56a795dd-ee49-5b62-aa82-6e1442821d7d"
+                      },
+                      "protectionPolicyInfo": {
+                        "id": "45582918-aa2f-4d72-9f55-8d6a13f07729",
+                        "name": "VVOL protection 3 tier",
+                        "resourceUri": "/api/v1/protection-policies/45582918-aa2f-4d72-9f55-8d6a13f07729",
+                        "type": "PROTECTION_POLICY"
+                      },
+                      "id": "17da4054-f029-4577-a08e-6dea4f62b50a",
+                      "operational": "ACTIVE",
+                      "generation": 178,
+                      "protections": [
+                        {
+                          "id": "36aa62c4-ddf7-4599-b40f-c40762626491",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-19T04:56:18.358Z"
+                                }
+                              ],
+                              "id": 3,
+                              "sourceProtectionScheduleId": 2,
+                              "nextRunTime": "2023-05-26T04:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "WEEKLY",
+                                "repeatInterval": {
+                                  "on": [
+                                    4
+                                  ],
+                                  "every": 1
+                                },
+                                "startTime": "00:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "WEEKLY",
+                                  "repeatInterval": {
+                                    "on": [
+                                      4
+                                    ],
+                                    "every": 1
+                                  },
+                                  "startTime": "00:00"
+                                },
+                                "backupGranularity": "VMWARE_CBT",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-19T04:00:00.000Z",
+                              "prevSuccessfulRunTime": "2023-05-19T04:56:18.358Z"
+                            }
+                          ],
+                          "type": "CLOUD_BACKUP",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "4160af63-1131-48ef-8b50-a25fc366ad9f",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T13:39:16.619Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T17:39:16.862Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T21:39:16.801Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T01:39:16.720Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T05:39:16.624Z"
+                                }
+                              ],
+                              "id": 1,
+                              "nextRunTime": "2023-05-25T09:38:54.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "HOURLY",
+                                "repeatInterval": {
+                                  "every": 4
+                                }
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "HOURLY",
+                                  "repeatInterval": {
+                                    "every": 4
+                                  }
+                                },
+                                "backupGranularity": "VMWARE_CBT",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-25T05:38:54.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T05:39:16.624Z"
+                            }
+                          ],
+                          "type": "SNAPSHOT",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "39406920-e4f6-4a7a-aad0-3dcc3b970407",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-21T04:09:59.176Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-22T04:09:53.039Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-23T04:11:13.598Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T04:11:05.042Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T04:10:43.195Z"
+                                }
+                              ],
+                              "id": 2,
+                              "sourceProtectionScheduleId": 1,
+                              "nextRunTime": "2023-05-26T04:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "DAILY",
+                                "repeatInterval": {
+                                  "every": 1
+                                },
+                                "startTime": "00:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "DAILY",
+                                  "repeatInterval": {
+                                    "every": 1
+                                  },
+                                  "startTime": "00:00"
+                                },
+                                "backupGranularity": "VMWARE_CBT",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-25T04:00:00.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T04:10:43.195Z"
+                            }
+                          ],
+                          "type": "BACKUP",
+                          "applicationType": "VMWARE"
+                        }
+                      ],
+                      "resourceUri": "/api/v1/protection-jobs/17da4054-f029-4577-a08e-6dea4f62b50a",
+                      "dataOrchestratorId": "d36122b2-ab2d-4474-ba97-15d2521926f0",
+                      "type": "PROTECTION_JOB"
+                    },
+                    {
+                      "assetInfo": {
+                        "id": "d83e0485-4bef-52ab-a991-ae62832eae68",
+                        "displayName": "0-VM-01-VVOL-DS",
+                        "type": "VIRTUAL_MACHINE",
+                        "resourceUri": "/api/v1/virtual-machines/d83e0485-4bef-52ab-a991-ae62832eae68"
+                      },
+                      "protectionPolicyInfo": {
+                        "id": "45582918-aa2f-4d72-9f55-8d6a13f07729",
+                        "name": "VVOL protection 3 tier",
+                        "resourceUri": "/api/v1/protection-policies/45582918-aa2f-4d72-9f55-8d6a13f07729",
+                        "type": "PROTECTION_POLICY"
+                      },
+                      "id": "dc112dca-c1e9-4694-b882-e0fbf7c11d5c",
+                      "operational": "ACTIVE",
+                      "generation": 123,
+                      "protections": [
+                        {
+                          "id": "36aa62c4-ddf7-4599-b40f-c40762626491",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-19T04:06:51.414Z"
+                                }
+                              ],
+                              "id": 3,
+                              "sourceProtectionScheduleId": 2,
+                              "nextRunTime": "2023-05-26T04:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "WEEKLY",
+                                "repeatInterval": {
+                                  "on": [
+                                    4
+                                  ],
+                                  "every": 1
+                                },
+                                "startTime": "00:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "WEEKLY",
+                                  "repeatInterval": {
+                                    "on": [
+                                      4
+                                    ],
+                                    "every": 1
+                                  },
+                                  "startTime": "00:00"
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-19T04:00:00.000Z",
+                              "prevSuccessfulRunTime": "2023-05-19T04:06:51.414Z"
+                            }
+                          ],
+                          "type": "CLOUD_BACKUP",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "4160af63-1131-48ef-8b50-a25fc366ad9f",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T14:05:31.953Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T18:05:31.331Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T22:05:31.280Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T02:05:32.153Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T06:05:32.108Z"
+                                }
+                              ],
+                              "id": 1,
+                              "nextRunTime": "2023-05-25T10:05:12.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "HOURLY",
+                                "repeatInterval": {
+                                  "every": 4
+                                }
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "HOURLY",
+                                  "repeatInterval": {
+                                    "every": 4
+                                  }
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-25T06:05:12.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T06:05:32.108Z"
+                            }
+                          ],
+                          "type": "SNAPSHOT",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "39406920-e4f6-4a7a-aad0-3dcc3b970407",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-21T04:03:29.739Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-22T04:03:38.426Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-23T04:03:12.815Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T04:03:28.449Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T04:03:29.246Z"
+                                }
+                              ],
+                              "id": 2,
+                              "sourceProtectionScheduleId": 1,
+                              "nextRunTime": "2023-05-26T04:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "DAILY",
+                                "repeatInterval": {
+                                  "every": 1
+                                },
+                                "startTime": "00:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "DAILY",
+                                  "repeatInterval": {
+                                    "every": 1
+                                  },
+                                  "startTime": "00:00"
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-25T04:00:00.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T04:03:29.246Z"
+                            }
+                          ],
+                          "type": "BACKUP",
+                          "applicationType": "VMWARE"
+                        }
+                      ],
+                      "resourceUri": "/api/v1/protection-jobs/dc112dca-c1e9-4694-b882-e0fbf7c11d5c",
+                      "dataOrchestratorId": "d36122b2-ab2d-4474-ba97-15d2521926f0",
+                      "type": "PROTECTION_JOB"
+                    },
+                    {
+                      "assetInfo": {
+                        "id": "09fd25da-f75c-53ff-ae19-16e0af4bed17",
+                        "displayName": "NT-Win2019-SQL-Demo",
+                        "type": "VIRTUAL_MACHINE",
+                        "resourceUri": "/api/v1/virtual-machines/09fd25da-f75c-53ff-ae19-16e0af4bed17"
+                      },
+                      "protectionPolicyInfo": {
+                        "id": "4ae981f5-2878-4870-b7f0-502571f9fcb0",
+                        "name": "NT-Local-Cloud",
+                        "resourceUri": "/api/v1/protection-policies/4ae981f5-2878-4870-b7f0-502571f9fcb0",
+                        "type": "PROTECTION_POLICY"
+                      },
+                      "id": "7456a7eb-1ce9-4d4d-bc8d-a072fb03cfae",
+                      "operational": "ACTIVE",
+                      "generation": 199,
+                      "protections": [
+                        {
+                          "id": "30c8f0d1-53f0-47dc-b6f2-79d84a17259b",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-07T07:06:43.224Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-14T07:03:40.263Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-21T07:05:20.175Z"
+                                }
+                              ],
+                              "id": 3,
+                              "sourceProtectionScheduleId": 2,
+                              "nextRunTime": "2023-05-28T07:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "WEEKLY",
+                                "repeatInterval": {
+                                  "on": [
+                                    6
+                                  ],
+                                  "every": 1
+                                },
+                                "startTime": "03:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "WEEKLY",
+                                  "repeatInterval": {
+                                    "on": [
+                                      6
+                                    ],
+                                    "every": 1
+                                  },
+                                  "startTime": "03:00"
+                                },
+                                "backupGranularity": "VMWARE_CBT",
+                                "consistency": "CRASH_CONSISTENT_ON_FAILURE"
+                              },
+                              "prevRunTime": "2023-05-21T07:00:00.000Z",
+                              "prevSuccessfulRunTime": "2023-05-21T07:05:20.175Z"
+                            }
+                          ],
+                          "type": "CLOUD_BACKUP",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "314bdee1-325b-4315-acc8-dea699a270ec",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-21T04:12:33.401Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-22T04:14:35.659Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-23T04:09:39.878Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T04:11:24.409Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T04:11:00.388Z"
+                                }
+                              ],
+                              "id": 2,
+                              "sourceProtectionScheduleId": 1,
+                              "nextRunTime": "2023-05-26T04:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "DAILY",
+                                "repeatInterval": {
+                                  "every": 1
+                                },
+                                "startTime": "00:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "DAILY",
+                                  "repeatInterval": {
+                                    "every": 1
+                                  },
+                                  "startTime": "00:00"
+                                },
+                                "backupGranularity": "VMWARE_CBT",
+                                "consistency": "CRASH_CONSISTENT_ON_FAILURE"
+                              },
+                              "prevRunTime": "2023-05-25T04:00:00.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T04:11:00.388Z"
+                            }
+                          ],
+                          "type": "BACKUP",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "c1fb5bac-c7aa-4831-9ef4-0f82e1282973",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T02:29:14.752Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T14:29:13.324Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T18:29:08.981Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T22:29:10.978Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T02:29:15.082Z"
+                                }
+                              ],
+                              "id": 1,
+                              "nextRunTime": "2023-05-25T14:28:35.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "HOURLY",
+                                "repeatInterval": {
+                                  "every": 4
+                                }
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "HOURLY",
+                                  "repeatInterval": {
+                                    "every": 4
+                                  }
+                                },
+                                "backupGranularity": "VMWARE_CBT",
+                                "consistency": "CRASH_CONSISTENT_ON_FAILURE"
+                              },
+                              "prevRunTime": "2023-05-25T02:28:35.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T02:29:15.082Z"
+                            }
+                          ],
+                          "type": "SNAPSHOT",
+                          "applicationType": "VMWARE"
+                        }
+                      ],
+                      "resourceUri": "/api/v1/protection-jobs/7456a7eb-1ce9-4d4d-bc8d-a072fb03cfae",
+                      "dataOrchestratorId": "d36122b2-ab2d-4474-ba97-15d2521926f0",
+                      "type": "PROTECTION_JOB"
+                    },
+                    {
+                      "assetInfo": {
+                        "id": "34738538-6f8a-5326-a102-676a20b91b5e",
+                        "displayName": "0-VM-RRD-VMFS-VM01-physical-RDM",
+                        "type": "VIRTUAL_MACHINE",
+                        "resourceUri": "/api/v1/virtual-machines/34738538-6f8a-5326-a102-676a20b91b5e"
+                      },
+                      "protectionPolicyInfo": {
+                        "id": "9a401e5e-09a7-4996-8008-f43a8ed1c116",
+                        "name": "Snapshot, Local, & Cloud Backup",
+                        "resourceUri": "/api/v1/protection-policies/9a401e5e-09a7-4996-8008-f43a8ed1c116",
+                        "type": "PROTECTION_POLICY"
+                      },
+                      "id": "97f41fc1-b308-40ed-9934-eff462c87310",
+                      "operational": "ACTIVE",
+                      "generation": 45,
+                      "protections": [
+                        {
+                          "id": "f47854b5-6f0d-4794-86c8-763017f0b3d7",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T03:07:25.454Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T03:04:11.734Z"
+                                }
+                              ],
+                              "id": 2,
+                              "sourceProtectionScheduleId": 1,
+                              "nextRunTime": "2023-05-26T03:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "DAILY",
+                                "repeatInterval": {
+                                  "every": 1
+                                },
+                                "startTime": "23:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "DAILY",
+                                  "repeatInterval": {
+                                    "every": 1
+                                  },
+                                  "startTime": "23:00"
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-25T03:00:00.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T03:04:11.734Z"
+                            }
+                          ],
+                          "type": "BACKUP",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "996f95a8-976b-43f4-bf34-3a30d84e5dca",
+                          "schedules": [
+                            {
+                              "id": 3,
+                              "sourceProtectionScheduleId": 2,
+                              "nextRunTime": "2023-05-28T06:00:00.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "WEEKLY",
+                                "repeatInterval": {
+                                  "on": [
+                                    6
+                                  ],
+                                  "every": 1
+                                },
+                                "startTime": "02:00"
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "WEEKLY",
+                                  "repeatInterval": {
+                                    "on": [
+                                      6
+                                    ],
+                                    "every": 1
+                                  },
+                                  "startTime": "02:00"
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              }
+                            }
+                          ],
+                          "type": "CLOUD_BACKUP",
+                          "applicationType": "VMWARE"
+                        },
+                        {
+                          "id": "88730122-1c26-4dd0-bce7-e575c34b5065",
+                          "schedules": [
+                            {
+                              "executionStatuses": [
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-24T22:17:41.442Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T00:17:41.300Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T02:17:40.718Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T04:17:41.293Z"
+                                },
+                                {
+                                  "status": "OK",
+                                  "timestamp": "2023-05-25T06:17:40.935Z"
+                                }
+                              ],
+                              "id": 1,
+                              "nextRunTime": "2023-05-25T08:17:23.000Z",
+                              "operational": "ACTIVE",
+                              "schedule": {
+                                "recurrence": "HOURLY",
+                                "repeatInterval": {
+                                  "every": 2
+                                }
+                              },
+                              "overrides": {
+                                "schedule": {
+                                  "recurrence": "HOURLY",
+                                  "repeatInterval": {
+                                    "every": 2
+                                  }
+                                },
+                                "backupGranularity": "VOLUME",
+                                "consistency": "CRASH"
+                              },
+                              "prevRunTime": "2023-05-25T06:17:23.000Z",
+                              "prevSuccessfulRunTime": "2023-05-25T06:17:40.935Z"
+                            }
+                          ],
+                          "type": "SNAPSHOT",
+                          "applicationType": "VMWARE"
+                        }
+                      ],
+                      "resourceUri": "/api/v1/protection-jobs/97f41fc1-b308-40ed-9934-eff462c87310",
+                      "dataOrchestratorId": "d36122b2-ab2d-4474-ba97-15d2521926f0",
+                      "type": "PROTECTION_JOB"
+                    }
+                  ],
+                  "pageLimit": 100,
+                  "pageOffset": 0,
+                  "total": 9
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/backup-recovery-reports/protection-status": {
+      "get": {
+        "tags": [
+          "GLBR > Protection Jobs Report"
+        ],
+        "summary": "Report all protection status",
+        "parameters": [
+          {
+            "name": "reportType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "SUMMARY"
+          },
+          {
+            "name": "appType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "ALL"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/virtual-machine-protection-groups": {
+      "get": {
+        "tags": [
+          "GLBR > Virtual Machine Protection Groups"
+        ],
+        "summary": "Show all protection-groups",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{DefaultOffset}}"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{DefaultLimit}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/hypervisor-managers": {
+      "get": {
+        "tags": [
+          "GLBR > vCenter Managers"
+        ],
+        "summary": "List the registered vCenters",
+        "parameters": [
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "id,name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/hypervisor-managers/{hypervisorId}": {
+      "get": {
+        "tags": [
+          "GLBR > vCenter Managers"
+        ],
+        "summary": "Detail information of a vCenter",
+        "parameters": [
+          {
+            "name": "hypervisorId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "800e9684-1ca6-44c1-86c0-d73d56e0eadd"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/hypervisor-managers/{hyperVisorId}/folders": {
+      "get": {
+        "tags": [
+          "GLBR > VMware Objects Folder"
+        ],
+        "summary": "Display Folders",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "folderType in VM"
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "id,name,displayName,appInfo,hypervisorManagerInfo,type,folderType"
+          },
+          {
+            "name": "hyperVisorId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/hypervisor-clusters": {
+      "get": {
+        "tags": [
+          "GLBR > VMware Clusters"
+        ],
+        "summary": "Display Hypervisor Clusters",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            },
+            "example": "hypervisorManagerInfo.name eq 10.30.156.70"
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "id,name,appInfo,clusterType,hypervisorManagerInfo,resourceName,state,status"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/hypervisor-hosts": {
+      "get": {
+        "tags": [
+          "GLBR > Hosts"
+        ],
+        "summary": "Display Hosts across registered Hypervisors",
+        "parameters": [
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "id,name,appInfo,hypervisorManagerInfo,hostType,networkAddress,hostType,parentInfo"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/virtual-machines/{VmId}/snapshots": {
+      "get": {
+        "tags": [
+          "GLBR > Snapshots"
+        ],
+        "summary": "Display list of Snapshots of VM",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{DefaultOffset}}"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{DefaultLimit}}"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "status eq OK"
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "name,pointInTime,expiresAt,id"
+          },
+          {
+            "name": "VmId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "e5ffa3bf-9df4-55a7-a88e-efde8dfa69f3"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "GLBR > Snapshots"
+        ],
+        "summary": "Create a Snapshot of VM",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "consistency": "CRASH",
+                  "description": "RRD API triggered",
+                  "expireAfter": {
+                    "unit": "HOURS",
+                    "value": 2
+                  },
+                  "lockFor": {
+                    "unit": "HOURS",
+                    "value": 1
+                  },
+                  "name": "Primera Snapshot for testing",
+                  "snapshotType": "SNAPSHOT"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "VmId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "44986dda-aeff-5b68-a6af-4d942616ec9d"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/virtual-machines/{vmId}/snapshots/{snapshotId}": {
+      "get": {
+        "tags": [
+          "GLBR > Snapshots"
+        ],
+        "summary": "Show VM snapshot detail",
+        "parameters": [
+          {
+            "name": "vmId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "44986dda-aeff-5b68-a6af-4d942616ec9d"
+          },
+          {
+            "name": "snapshotId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "51e82c58-0d59-49d1-af91-8d058f849cb8"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "GLBR > Snapshots"
+        ],
+        "summary": "Delete a snapshot from a VM",
+        "parameters": [
+          {
+            "name": "vmId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "44986dda-aeff-5b68-a6af-4d942616ec9d"
+          },
+          {
+            "name": "snapshotId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "a20262b5-faf2-4d3c-8277-1afe2534d1a3"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/virtual-machines/{vmId}/snapshots/{snapshotId}/index-files": {
+      "post": {
+        "tags": [
+          "GLBR > Snapshots"
+        ],
+        "summary": "Initiate files indexing from snapshot of a VM (VVOL only)",
+        "requestBody": {
+          "content": {}
+        },
+        "parameters": [
+          {
+            "name": "vmId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "8502b867-dfb1-5aa5-9b78-27f5826238e2"
+          },
+          {
+            "name": "snapshotId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "cc1e9d01-e6ac-4e36-9a33-66eff01e44ab"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/virtual-machines/{vmId}/snapshots/{snapshotId}/indexed-files": {
+      "get": {
+        "tags": [
+          "GLBR > Snapshots"
+        ],
+        "summary": "Display files & folders from snapshot of a VM Copy",
+        "parameters": [
+          {
+            "name": "vmId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "8502b867-dfb1-5aa5-9b78-27f5826238e2"
+          },
+          {
+            "name": "snapshotId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "cc1e9d01-e6ac-4e36-9a33-66eff01e44ab"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/virtual-machines/{vmId}/snapshots/{snapshotId}/indexed-filesystems": {
+      "get": {
+        "tags": [
+          "GLBR > Snapshots"
+        ],
+        "summary": "Display FS information from snapshot of a VM",
+        "parameters": [
+          {
+            "name": "vmId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "44986dda-aeff-5b68-a6af-4d942616ec9d"
+          },
+          {
+            "name": "snapshotId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "51e82c58-0d59-49d1-af91-8d058f849cb8"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/datastores": {
+      "get": {
+        "tags": [
+          "GLBR > Datastore"
+        ],
+        "summary": "Display Datastore",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{DefaultOffset}}"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{DefaultLimit}}"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "name in Primera-RRD-VV01"
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "id,name"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/datastores/{datastoreId}": {
+      "get": {
+        "tags": [
+          "GLBR > Datastore"
+        ],
+        "summary": "Display Datastore Detail",
+        "parameters": [
+          {
+            "name": "datastoreId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "b5bda245-2dab-59cd-adc9-e65937b9ea30"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/datastores/{datastoreId}/restore": {
+      "post": {
+        "tags": [
+          "GLBR > Datastore"
+        ],
+        "summary": "Restore Datastore from a protection",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "backupId": "9b4c14a6-3cd5-4907-97c4-cf44c5b641e4",
+                  "restoreType": "ALTERNATE",
+                  "snapshotId": "9b4c14a6-3cd5-4907-97c4-cf44c5b641e4",
+                  "targetDatastoreInfo": {
+                    "appInfo": {
+                      "vmware": {
+                        "datacenterId": "string"
+                      }
+                    },
+                    "clusterId": "string",
+                    "description": "string",
+                    "folderId": "string",
+                    "hostId": "string",
+                    "hypervisorManagerId": "string",
+                    "name": "snap-ae36",
+                    "powerOnVMsAfterRestore": false,
+                    "storageInfo": {
+                      "storageSystemId": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "datastoreId",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "example": "b5bda245-2dab-59cd-adc9-e65937b9ea30"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/app-data-management/v1/dashboard/protections-summary": {
+      "get": {
+        "tags": [
+          "GLBR > Dashboard Items"
+        ],
+        "summary": "Show Protection Summary",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{DefaultLimit}}"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "VMWARE"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/app-data-management/v1/dashboard/inventory-summary": {
+      "get": {
+        "tags": [
+          "GLBR > Dashboard Items"
+        ],
+        "summary": "Show Inventory Summary",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
